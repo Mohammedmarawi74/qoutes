@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Testimonial, ThemeConfig } from "../types";
+import './TestimonialsCarousel.css';
 
 interface ExtendedTestimonialProps {
   testimonials: Testimonial[];
@@ -30,40 +31,40 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
   if (!currentTestimonial) return null;
 
   return (
-    <div className="w-full max-w-[540px] aspect-square mx-auto">
-      {/* Inject Custom CSS for this slide */}
+    <div className="testimonial-wrapper w-full max-w-[540px] aspect-square mx-auto">
+      {/* Dynamic Slide CSS */}
       {currentTestimonial.customCss && (
         <style>{currentTestimonial.customCss}</style>
       )}
 
-      {/* Card Container */}
+      {/* Main Card */}
       <div
-        className="slide-card relative rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 w-full h-full flex flex-col"
+        className="testimonial-card relative flex flex-col w-full h-full overflow-hidden rounded-3xl"
         style={{ backgroundColor: theme.cardBg }}
       >
-        {/* Decorative Background Elements (Dynamic Colors) */}
+        {/* Decorative Elements */}
         <div
-          className="absolute top-0 left-0 -ml-16 -mt-16 w-80 h-80 rounded-full opacity-40 blur-3xl pointer-events-none transition-colors duration-500"
+          className="deco-circle deco-circle-top"
           style={{ backgroundColor: theme.primary }}
         ></div>
         <div
-          className="absolute bottom-0 right-0 -mr-16 -mb-16 w-80 h-80 rounded-full opacity-40 blur-3xl pointer-events-none transition-colors duration-500"
+          className="deco-circle deco-circle-bottom"
           style={{ backgroundColor: theme.secondary }}
         ></div>
 
-        <div className="relative z-10 p-8 pt-12 flex-1 flex flex-col justify-start items-center text-center">
+        <div className="relative z-10 flex flex-col flex-1 items-center p-8 pt-12 text-center justify-start">
           {/* Quote Icon */}
           <div
-            className="slide-quote mb-6 opacity-20"
+            className="quote-icon"
             style={{ color: theme.primary }}
           >
             <Quote size={56} className="fill-current" />
           </div>
 
-          {/* Content */}
+          {/* Testimonial Content */}
           <div className="w-full transition-all duration-300">
             <p
-              className="slide-text text-xl md:text-2xl font-medium leading-loose mb-10 max-w-2xl mx-auto text-center"
+              className="testimonial-text max-w-2xl mx-auto"
               dir="rtl"
               style={{ color: theme.textColor }}
             >
@@ -71,10 +72,10 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
             </p>
 
             <div className="flex flex-col items-center space-y-4">
-              {/* Avatar */}
-              <div className="slide-avatar-container relative group">
+              {/* Profile Avatar */}
+              <div className="profile-avatar-wrapper group">
                 <div
-                  className="absolute -inset-1 rounded-full opacity-30 group-hover:opacity-50 transition duration-500 blur-sm"
+                  className="profile-avatar-ring"
                   style={{
                     background: `linear-gradient(to right, ${theme.primary}, ${theme.secondary})`,
                   }}
@@ -82,21 +83,21 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
                 <img
                   src={currentTestimonial.avatarUrl}
                   alt={currentTestimonial.name}
-                  className="slide-avatar relative w-24 h-24 rounded-full object-cover border-4 shadow-lg"
+                  className="profile-avatar"
                   style={{ borderColor: theme.cardBg }}
                 />
               </div>
 
-              {/* Info */}
-              <div className="slide-info space-y-1">
+              {/* Profile Details */}
+              <div className="profile-info space-y-1">
                 <h3
-                  className="slide-name text-xl font-bold"
+                  className="profile-name"
                   style={{ color: theme.textColor }}
                 >
                   {currentTestimonial.name}
                 </h3>
                 <p
-                  className="slide-meta text-base font-medium opacity-80"
+                  className="profile-meta"
                   style={{ color: theme.textColor }}
                 >
                   {currentTestimonial.role} •{" "}
@@ -109,29 +110,29 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
           </div>
         </div>
 
-        {/* Branding Elements */}
-        <div className="absolute bottom-8 left-10 right-10 flex justify-between items-end flex-row-reverse z-20">
+        {/* Branding Branding */}
+        <div className="branding-container">
           <span 
             dir="ltr" 
-            className="text-xl font-black tracking-widest uppercase opacity-80"
+            className="brand-en"
             style={{ color: theme.primary }}
           >
             al-investor
           </span>
           <span 
             dir="rtl" 
-            className="text-2xl font-black opacity-80"
+            className="brand-ar"
             style={{ color: theme.primary }}
           >
             المستثمر
           </span>
         </div>
 
-        {/* Navigation Buttons inside Card */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none">
+        {/* Navigation Controls */}
+        <div className="absolute inset-x-0 flex justify-between px-4 pointer-events-none top-1/2 -translate-y-1/2">
           <button
             onClick={handleNext}
-            className="pointer-events-auto p-3 rounded-full bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 rotate-180"
+            className="nav-button rotate-180"
             style={{ color: theme.primary }}
           >
             <ChevronLeft size={24} />
@@ -139,7 +140,7 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
 
           <button
             onClick={handlePrev}
-            className="pointer-events-auto p-3 rounded-full bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 rotate-180"
+            className="nav-button rotate-180"
             style={{ color: theme.primary }}
           >
             <ChevronRight size={24} />
@@ -149,3 +150,4 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
     </div>
   );
 };
+
