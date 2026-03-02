@@ -51,7 +51,7 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
           style={{ backgroundColor: theme.secondary }}
         ></div>
 
-        <div className="relative z-10 p-8 flex-1 flex flex-col justify-center items-center text-center">
+        <div className="relative z-10 p-8 pt-12 flex-1 flex flex-col justify-start items-center text-center">
           {/* Quote Icon */}
           <div
             className="slide-quote mb-6 opacity-20"
@@ -109,16 +109,22 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
           </div>
         </div>
 
-        {/* Footer */}
-        <div
-          className="absolute bottom-6 left-6 right-6 px-6 py-4 rounded-2xl flex justify-between items-center font-extrabold flex-row-reverse shadow-xl backdrop-blur-md transition-all"
-          style={{ 
-            color: theme.cardBg,
-            background: `linear-gradient(135deg, ${theme.primary}E6, ${theme.secondary}E6)` 
-          }}
-        >
-          <span dir="ltr" className="text-lg tracking-widest drop-shadow-sm">al-investor</span>
-          <span dir="rtl" className="text-xl drop-shadow-sm">المستثمر</span>
+        {/* Branding Elements */}
+        <div className="absolute bottom-8 left-10 right-10 flex justify-between items-end flex-row-reverse z-20">
+          <span 
+            dir="ltr" 
+            className="text-xl font-black tracking-widest uppercase opacity-80"
+            style={{ color: theme.primary }}
+          >
+            al-investor
+          </span>
+          <span 
+            dir="rtl" 
+            className="text-2xl font-black opacity-80"
+            style={{ color: theme.primary }}
+          >
+            المستثمر
+          </span>
         </div>
 
         {/* Navigation Buttons inside Card */}
