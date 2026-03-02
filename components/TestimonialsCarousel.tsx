@@ -30,7 +30,7 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
   if (!currentTestimonial) return null;
 
   return (
-    <div className="w-full max-w-[420px] aspect-[9/16] mx-auto">
+    <div className="w-full max-w-[540px] aspect-square mx-auto">
       {/* Inject Custom CSS for this slide */}
       {currentTestimonial.customCss && (
         <style>{currentTestimonial.customCss}</style>
@@ -111,11 +111,14 @@ export const TestimonialsCarousel: React.FC<ExtendedTestimonialProps> = ({
 
         {/* Footer */}
         <div
-          className="absolute bottom-8 left-0 right-0 px-8 flex justify-between items-center text-lg font-bold opacity-80 flex-row-reverse"
-          style={{ color: theme.textColor }}
+          className="absolute bottom-6 left-6 right-6 px-6 py-4 rounded-2xl flex justify-between items-center font-extrabold flex-row-reverse shadow-xl backdrop-blur-md transition-all"
+          style={{ 
+            color: theme.cardBg,
+            background: `linear-gradient(135deg, ${theme.primary}E6, ${theme.secondary}E6)` 
+          }}
         >
-          <span dir="ltr">al-investor</span>
-          <span dir="rtl">المستثمر</span>
+          <span dir="ltr" className="text-lg tracking-widest drop-shadow-sm">al-investor</span>
+          <span dir="rtl" className="text-xl drop-shadow-sm">المستثمر</span>
         </div>
 
         {/* Navigation Buttons inside Card */}
